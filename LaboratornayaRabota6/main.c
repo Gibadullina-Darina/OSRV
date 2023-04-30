@@ -25,9 +25,10 @@ sh_mem_t *sm;
 
 int main(void)
 {
-    printf("Gibadullina Darina I993\n");
+    
     int md;
     int childpid;
+    printf("Gibadullina Darina I993\n");
     shm_unlink(MEM_NAME);
     md = shm_open(MEM_NAME, O_RDWR | O_CREAT, 0777);
 
@@ -90,7 +91,7 @@ int main(void)
 
 int process_1(void)
 {
-    //sem_wait(&(sm->sem));
+    sem_wait(&(sm->sem));
     printf("First process.\n(1) Previous value: %i\n", sm->value);
 
     sm->value = 10;
@@ -98,13 +99,13 @@ int process_1(void)
     sm->value *= 4;
     sm->value -= 15;
     printf("(1) Result : %i \n", sm->value);
-    //sem_post(&(sm->sem));
+    sem_post(&(sm->sem));
     return 0;
 }
 
 int process_2(void)
 {
-    //sem_wait(&(sm->sem));
+    sem_wait(&(sm->sem));
     printf("Second process.\n(2) Previous value: %i\n", sm->value);
 
     sm->value = 7;
@@ -112,7 +113,7 @@ int process_2(void)
     sm->value *= 2;
     sm->value -= 1;
     printf("(2) Result : %i \n", sm->value);
-    //sem_post(&(sm->sem));
+    sem_post(&(sm->sem));
     return 0;
 }
 
