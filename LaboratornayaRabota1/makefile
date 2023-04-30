@@ -1,8 +1,7 @@
-CFLAGS =
-all: main 
-debug:  CFLAGS+= -g
-debug: main 
+all: main
+debug: main.c
+	gcc -g -o main_debug main.c
 main : main.c
-	gcc $(CFLAGS) -o main main.c
+	gcc -o main main.c
 clean:
-	rm -f main 
+	rm -f main main_debug
