@@ -12,6 +12,7 @@ int main(int argc,char* argv)
     int rcvid;
     int chid;
     char message[30];
+    char rightmessage[] = "Gibadullina";
     printf("Prog server \n");
     printf("Server start working/n");
     chid = ChannelCreate(0);
@@ -23,6 +24,14 @@ int main(int argc,char* argv)
         rcvid = MsgReceive(chid, message, sizeof(message), NULL);
         printf("Polychili soobshenie, rcid %X \n", rcvid);
         printf("Soobshenie takoe : \"%s\".\n", message);
+        if(!strcmp(message,rightmessage))
+           {
+            sprintf(message,"Soobwenie ojidaemoe"); 
+           }
+           else
+           {
+            sprintf(message,"Soobwenie owibochnoe");   
+           }
         MsgReply(rcvid, EOK, message, sizeof(message));
         printf("\"%s\". \n", message);
     }
