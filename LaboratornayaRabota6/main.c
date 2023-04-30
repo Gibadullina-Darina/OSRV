@@ -42,7 +42,7 @@ int main(void)
         perror("ftruncate()");
         return -1;
     }
-    sm mmap(NULL, sizeof(*sm), PROT_READ | PROT_WRITE, MAP_SHARED, md, 0);
+    sm = mmap(NULL, sizeof(*sm), PROT_READ | PROT_WRITE, MAP_SHARED, md, 0);
     if (sm == MAP_FAILED)
     {
         perror("mmap()");
