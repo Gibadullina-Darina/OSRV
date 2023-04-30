@@ -33,9 +33,10 @@ void *thread2(void *not_used)
 
 int main()
 {
-    printf("Gibadullina Darina I993\n");
+    
     time_t now;
     char buf[27];
+    printf("Gibadullina Darina I993\n");
     barrier_init(&barrier, NULL, 3);
     printf("Start \n");
     pthread_create(NULL, NULL, thread1, NULL);
